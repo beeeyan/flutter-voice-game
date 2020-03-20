@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../main.dart';
 
 class DrawerMenu extends StatelessWidget {
   @override
@@ -25,12 +24,7 @@ class DrawerMenu extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text('ホーム'),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (BuildContext context) => MyApp(),
-                ),
-              );
+              Navigator.of(context).pushReplacementNamed("/home");
             },
           ),
           //ListTile(
