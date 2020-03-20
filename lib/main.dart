@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './ui/home_panel.dart';
+import './widget/drawer_menu.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blueGrey[600],
         accentColor: Colors.blueGrey[600],
       ),
-      home: MyHomePage(title: 'VOICE MONSTER'),
+      home: MyHomePage(title: 'SPELL BOOK'),
     );
   }
 }
@@ -66,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      drawer: DrawerMenu(),
       body: Center(
         child: HomePanel(),
         // Center is a layout widget. It takes a single child and positions it
@@ -97,11 +99,11 @@ class _MyHomePageState extends State<MyHomePage> {
 //          ],
 //        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+//      floatingActionButton: FloatingActionButton(
+//        onPressed: _incrementCounter,
+//        tooltip: 'Increment',
+//        child: Icon(Icons.add),
+//      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
