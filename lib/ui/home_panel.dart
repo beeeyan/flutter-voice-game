@@ -7,7 +7,7 @@ class HomePanel extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         ButtonTheme(
-          minWidth: 180,
+          minWidth: 150,
           height: 200,
           padding: const EdgeInsets.all(20),
           child: RaisedButton(
@@ -21,7 +21,7 @@ class HomePanel extends StatelessWidget {
           ),
         ),
         ButtonTheme(
-          minWidth: 180,
+          minWidth: 150,
           height: 200,
           padding: const EdgeInsets.all(20),
           child: RaisedButton(
