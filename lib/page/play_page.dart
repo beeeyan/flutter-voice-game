@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widget/drawer_menu.dart';
 import 'package:flutter_speech/flutter_speech.dart';
 import 'dart:math';
+import "dart:async";
 
 class PlayPage extends StatefulWidget {
   PlayPage({Key key, this.title}) : super(key: key);
@@ -45,6 +46,7 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
 
   String _themeText = '';
   String transcription = '';
+  String _image = 'images/kaiju.png';
 
   Language selectedLang = languages.first;
 
@@ -89,15 +91,29 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
               ),
             ),
           ),
-//          Row(
-//            children: <Widget>[
-//              Text(_hp.toString()),
-//              Text((_themeText == transcription).toString())
-//            ],
-//          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                  'HP : ',
+                  style: TextStyle(
+                    fontSize: 18,
+                  )
+              ),
+              Text(
+                _hp.toString(),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.red
+                  )
+              ),
+
+            ],
+
+          ),
           Container(
             child: Center(
-              child: Image.asset('images/kaiju.png'),
+              child: Image.asset(_image),
             ),
           ),
           Container(
@@ -123,9 +139,6 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
                 ),
                 _buildButton(
                   onPressed: (){
-                    if(_isListening){
-                      stop();
-                    }
                     attack();
                   },
                   label: '攻撃',
@@ -170,11 +183,17 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
     setState(() => transcription = '');
   }
 
-  void attack(){
-    activateSpeechRecognizer();
+  void attack() async{
+    if(_isListening) {
+      stop();
+      await Future.delayed(Duration(milliseconds: 500));
+    }
     if(_themeText == transcription){
       setState(() => _hp = _hp - 1);
       setTongueTwister();
+    }
+    if(_hp <= 0){
+      setState(() => _image = 'images/victory.png');
     }
   }
 
