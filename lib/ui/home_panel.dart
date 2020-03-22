@@ -14,7 +14,7 @@ class HomePanel extends StatelessWidget {
             color: Colors.grey[300],
             child: const Text('早口言葉レベル1'),
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed("/play");
+              Navigator.of(context).pushReplacementNamed("/play/basic");
             },
             highlightColor: Colors.redAccent,
             onHighlightChanged: (value) {},
@@ -28,7 +28,7 @@ class HomePanel extends StatelessWidget {
             color: Colors.grey[300],
             child: const Text('早口言葉レベル2'),
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed("/play");
+              Navigator.of(context).pushReplacementNamed("/play/advanced");
             },
             highlightColor: Colors.blueAccent,
             onHighlightChanged: (value) {},

@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: title),
       routes: <String,WidgetBuilder>{
         '/home': (BuildContext context) => MyHomePage(title: title),
-        '/play': (BuildContext context) => PlayPage(title: title),
+        '/play/basic': (BuildContext context) => PlayPage(title: title, level: 'basic'),
+        '/play/advanced': (BuildContext context) => PlayPage(title: title, level: 'advanced'),
       },
     );
   }
