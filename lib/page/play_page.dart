@@ -12,7 +12,7 @@ class PlayPage extends StatefulWidget {
 
   // アロー関数を用いて、Stateを呼ぶ
   @override
-  State<StatefulWidget> createState() => _PlayPage(level: level);
+  State<StatefulWidget> createState() => _PlayPage();
 }
 
 const String basic = 'basic';
@@ -54,9 +54,7 @@ class Language {
 }
 
 class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
-  _PlayPage({this.level});
 
-  String level;
   SpeechRecognition _speech;
   bool _speechRecognitionAvailable = false;
   bool _isListening = false;
@@ -73,12 +71,12 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
   initState() {
     super.initState();
     activateSpeechRecognizer();
-    setTongueTwister(level);
-    if (level == basic) {
+    setTongueTwister(widget.level);
+    if (widget.level == basic) {
       _image = 'images/kaiju.png';
       _hp = 5;
     }
-    if (level == advanced) {
+    if (widget.level == advanced) {
       _image = 'images/fantasy_mahoujin_syoukan.png';
       _hp = 7;
     }
@@ -111,7 +109,7 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
                 InkWell(
-                  onTap: () => _themeText != '終了!!'? setTongueTwister(level) : null,
+                  onTap: () => _themeText != '終了!!'? setTongueTwister(widget.level) : null,
                   child: Container(
                     child: _themeText != '終了!!'? Icon(Icons.autorenew) : null,
                   ),
@@ -223,7 +221,7 @@ class _PlayPage extends State<PlayPage> with SingleTickerProviderStateMixin {
     }
     if (_themeText == transcription) {
       setState(() => _hp = _hp - 1);
-      setTongueTwister(level);
+      setTongueTwister(widget.level);
     }
     if (_hp <= 0) {
       setState(() => _image = 'images/victory.png');
